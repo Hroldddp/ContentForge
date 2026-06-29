@@ -21,7 +21,7 @@ jobs:
           echo "" >> $GITHUB_ENV
           echo "**Full changelog**: https://github.com/${{ github.repository }}/commits/${{ github.ref_name }}" >> $GITHUB_ENV
           echo "EOF" >> $GITHUB_ENV
-      - uses: softprops/action-gh-release@v2
+      - uses: softprops/action-gh-release@v3
         with:
           body: ${{ env.RELEASE_NOTES }}
           generate_release_notes: true
