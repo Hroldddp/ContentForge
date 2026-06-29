@@ -1,0 +1,11 @@
+# Global owners
+* @Hroldddp
+
+# Core engine
+src/ @Hroldddp
+
+# Documentation
+*.md @Hroldddp
+
+# CI/CD
+.github/ @Hroldddp

@@ -1,0 +1,46 @@
+# Auto-detect text files and normalize line endings
+* text=auto
+
+# Python
+*.py text diff=python
+*.pyw text
+*.pyx text
+*.pxd text
+*.pxi text
+
+# Shell
+*.sh text eol=lf
+
+# Config
+*.cfg text
+*.conf text
+*.ini text
+*.toml text
+*.yaml text
+*.yml text
+*.json text
+
+# Documentation
+*.md text diff=markdown
+*.txt text
+*.rst text
+
+# Git
+.gitattributes text
+.gitignore text
+
+# Binary files (keep as-is)
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.mp4 binary
+*.wav binary
+*.mp3 binary
+*.ttf binary
+*.woff binary
+*.woff2 binary
+
+# Linux line endings for shell scripts
+*.sh eol=lf

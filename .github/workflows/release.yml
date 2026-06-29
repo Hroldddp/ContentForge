@@ -1,0 +1,27 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Generate release notes
+        id: notes
+        run: |
+          echo "RELEASE_NOTES<<EOF" >> $GITHUB_ENV
+          echo "## What's Changed" >> $GITHUB_ENV
+          git log --oneline --no-decorate $(git describe --tags --abbrev=0 2>/dev/null || git rev-list --max-parents=0 HEAD)..HEAD | while read line; do echo "- $line" >> $GITHUB_ENV; done
+          echo "" >> $GITHUB_ENV
+          echo "**Full changelog**: https://github.com/${{ github.repository }}/commits/${{ github.ref_name }}" >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
+      - uses: softprops/action-gh-release@v2
+        with:
+          body: ${{ env.RELEASE_NOTES }}
+          generate_release_notes: true

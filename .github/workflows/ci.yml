@@ -1,0 +1,50 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: "pip"
+      - run: pip install ruff
+      - run: ruff check src/ make_video.py wizard.py
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: "pip"
+      - run: pip install -r requirements.txt
+      - name: Smoke test (imports)
+        run: >
+          python3 -c
+          "from src.topic import generate_stock_queries, kill_ollama, _start_ollama;
+          from src.research import research_topic;
+          from src.stock import download_stock_footage;
+          from src.utils import run_ffmpeg_progress, check_ytdlp, has_audio_stream, get_media_resolution;
+          print('All imports OK')"
+      - name: Check README has badges
+        run: grep -q 'github.com/Hroldddp/ContentForge/actions' README.md || echo 'Missing CI badge'
+
+  check_setup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate setup.sh syntax
+        run: bash -n setup.sh && echo "setup.sh syntax OK"
+      - name: Validate .env.example
+        run: test -f .env.example && echo ".env.example exists"
+      - name: Validate SECURITY.md
+        run: test -f SECURITY.md && echo "SECURITY.md exists"

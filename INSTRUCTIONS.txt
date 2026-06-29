@@ -1,0 +1,39 @@
+  CONTENTFORGE
+  Text → Video. Automatically.
+
+  SETUP (first time only)
+    git clone https://github.com/Hroldddp/ContentForge.git
+    cd ContentForge
+    bash setup.sh
+
+  ACTIVATE (every new terminal)
+    source venv/bin/activate
+
+  RUN
+    python wizard.py                  ← interactive
+    python make_video.py script.txt   ← quick CLI
+
+  CLI OPTIONS
+    --clips ./clips       Your own video clips
+    --voice af_sky        Narrator voice
+    --bg-volume 0-100     Background volume %
+    --resolution          1080x1920 or 1920x1080
+    --research            Web research
+    -o output.mp4         Output filename
+    --no-stock            No stock footage
+
+  VOICES
+    af_bella     Female, warm (US)
+    af_sky       Female, soft (US)
+    af_sarah     Female, calm (UK)
+    af_nicole    Female, energetic (US)
+    am_adam      Male, deep (US)
+    am_michael   Male, natural (US)
+    am_multi     Male, versatile (UK)
+
+  NOTES
+    • Internet needed for voiceover + stock
+    • Captions synced to speech automatically
+    • Your clips play first, stock fills the rest
+    • Temp files cleaned after every run
+    • Full docs: README.md

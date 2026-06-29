@@ -1,0 +1,21 @@
+name: Welcome
+
+on:
+  issues:
+    types: [opened]
+  pull_request_target:
+    types: [opened]
+
+jobs:
+  welcome:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/first-interaction@v1
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          issue-message: |
+            Thanks for opening your first issue! We'll take a look as soon as possible.
+            In the meantime, check our [contribution guidelines](CONTRIBUTING.md).
+          pr-message: |
+            Thanks for opening your first pull request! We'll review it soon.
+            Make sure it follows our [contribution guidelines](CONTRIBUTING.md).

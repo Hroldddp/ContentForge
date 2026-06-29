@@ -1,0 +1,25 @@
+# Auto-label PRs based on changed files
+src/topic.py:
+  - area:ai
+src/research.py:
+  - area:ai
+src/stock.py:
+  - area:stock
+src/video_builder.py:
+  - area:core
+src/generator.py:
+  - area:core
+src/utils.py:
+  - area:core
+make_video.py:
+  - area:core
+wizard.py:
+  - area:core
+setup.sh:
+  - area:setup
+README.md:
+  - area:docs
+docs/**/*:
+  - area:docs
+.github/**/*:
+  - area:setup

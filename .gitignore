@@ -1,0 +1,23 @@
+# Virtual environment
+venv/
+__pycache__/
+*.pyc
+
+# Environment config (contains keys)
+.env
+
+# Generated files
+output/
+temp/
+*.mp4
+*.wav
+*.srt
+*.txt~
+
+# User scripts
+script.txt
+user_scripts/
+
+# OS junk
+.DS_Store
+Thumbs.db
